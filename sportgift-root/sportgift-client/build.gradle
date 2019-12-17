@@ -1,0 +1,55 @@
+apply plugin:'idea'
+
+sourceSets.main.java.srcDirs += "src/querydsl/java"
+sourceSets {
+  main.java
+  querydsl {
+    java.srcDirs = ["src/querydsl/java/"]
+  }
+}
+
+task packageSourcesQuerydsl(type: Jar) {
+  classifier = 'sources'
+  from sourceSets.main.allSource + sourceSets.querydsl.allSource
+}
+  
+artifacts.archives packageSourcesQuerydsl
+
+configurations {
+    querydslapt
+}
+
+dependencies {
+    querydslapt "com.querydsl:querydsl-apt:4.2.1"
+}
+
+task querydsl(type: JavaCompile, group: 'build', description: 'Generate the QueryDSL query types') {
+    source = sourceSets.main.java
+    classpath = configurations.compile + configurations.compileOnly + configurations.querydslapt
+    options.compilerArgs = [
+	    '-proc:only',
+		'-processor', 'com.querydsl.apt.jpa.JPAAnnotationProcessor,com.querydsl.apt.QuerydslAnnotationProcessor'
+    ]
+    destinationDir = sourceSets.querydsl.java.srcDirs.iterator().next()
+    outputs.dir destinationDir
+}
+
+compileJava.source querydsl.outputs.files
+
+clean {
+    delete sourceSets.querydsl.java.srcDirs
+}
+
+dependencies {
+	compile project(":sportgift-vo")
+	compile("com.querydsl:querydsl-core")
+    compile("javax.persistence:javax.persistence-api")
+    compile 'org.springframework.data:spring-data-commons'
+    compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	compile 'org.springframework:spring-webflux'
+   	compile group: 'org.springframework.data', name: 'spring-data-jpa'
+	compile group: 'com.querydsl', name: 'querydsl-jpa'
+	compile group: 'javax.annotation', name: 'javax.annotation-api'
+    testCompile group: 'junit', name: 'junit'    
+}

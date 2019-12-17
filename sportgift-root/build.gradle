@@ -1,0 +1,70 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+}
+
+ext {
+    springBootVersion = '2.1.6.RELEASE'
+}
+
+allprojects {
+    group = 'ec.com.cryptogateway'
+    version = '1.0.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'maven'    
+    
+    compileJava.options.encoding = 'UTF-8'
+		tasks.withType(JavaCompile) {
+			options.encoding = 'UTF-8'
+	}
+	
+	  dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+    
+    //Script para agregar los fuentes java
+	plugins.withType(JavaPlugin) {
+	     
+		task packageSources(type: Jar) {
+			classifier = 'sources'
+			from sourceSets.main.allSource
+		}
+	
+		artifacts.archives packageSources
+	}
+	
+	plugins.withType(WarPlugin) {
+	
+	    configurations.archives.artifacts.with { archives ->
+	        def jarArtifact
+	        archives.each {
+	            if (it.file =~ 'jar') {
+	                jarArtifact = it
+	            }
+	        }
+	        println "JAR to delete: ${jarArtifact}"
+	        remove(jarArtifact)
+	    }
+	
+	}
+	
+	plugins.withType(EarPlugin) {
+	     
+		ear{
+			exclude '**/*sources.jar'	
+		}
+	}
+	   
+}

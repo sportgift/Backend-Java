@@ -1,0 +1,5 @@
+rootProject.name = 'sportgift-root'
+include 'sportgift-vo'
+include 'sportgift-client'
+include 'sportgift-core'
+include 'sportgift-services'
