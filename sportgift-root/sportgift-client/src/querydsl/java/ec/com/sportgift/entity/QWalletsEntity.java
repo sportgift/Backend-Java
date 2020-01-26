@@ -22,11 +22,13 @@ public class QWalletsEntity extends EntityPathBase<WalletsEntity> {
 
     public static final QWalletsEntity walletsEntity = new QWalletsEntity("walletsEntity");
 
-    public final NumberPath<Integer> atmPassword = createNumber("atmPassword", Integer.class);
-
     public final QBlockchainEntity blockchain;
 
     public final NumberPath<Integer> blockchainId = createNumber("blockchainId", Integer.class);
+
+    public final QCompetitorEntity competitorEntity;
+
+    public final NumberPath<Integer> competitorId = createNumber("competitorId", Integer.class);
 
     public final DateTimePath<java.util.Date> creationDate = createDateTime("creationDate", java.util.Date.class);
 
@@ -36,13 +38,11 @@ public class QWalletsEntity extends EntityPathBase<WalletsEntity> {
 
     public final StringPath publicKey = createString("publicKey");
 
-    public final QStoreEntity store;
+    public final QSponsoringCompanyEntity sponsoringCompanyEntity;
 
-    public final NumberPath<Integer> storeId = createNumber("storeId", Integer.class);
+    public final NumberPath<Integer> sponsoringCompanyId = createNumber("sponsoringCompanyId", Integer.class);
 
     public final StringPath wallet = createString("wallet");
-
-    public final StringPath walletType = createString("walletType");
 
     public QWalletsEntity(String variable) {
         this(WalletsEntity.class, forVariable(variable), INITS);
@@ -63,7 +63,8 @@ public class QWalletsEntity extends EntityPathBase<WalletsEntity> {
     public QWalletsEntity(Class<? extends WalletsEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.blockchain = inits.isInitialized("blockchain") ? new QBlockchainEntity(forProperty("blockchain")) : null;
-        this.store = inits.isInitialized("store") ? new QStoreEntity(forProperty("store")) : null;
+        this.competitorEntity = inits.isInitialized("competitorEntity") ? new QCompetitorEntity(forProperty("competitorEntity"), inits.get("competitorEntity")) : null;
+        this.sponsoringCompanyEntity = inits.isInitialized("sponsoringCompanyEntity") ? new QSponsoringCompanyEntity(forProperty("sponsoringCompanyEntity"), inits.get("sponsoringCompanyEntity")) : null;
     }
 
 }

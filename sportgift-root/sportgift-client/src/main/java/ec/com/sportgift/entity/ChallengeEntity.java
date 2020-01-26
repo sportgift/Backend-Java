@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Entity
 @Table(name = "challenge")
 public class ChallengeEntity implements Serializable{
 	
@@ -46,13 +48,13 @@ public class ChallengeEntity implements Serializable{
 	@Column(name = "name")
 	private String name;
 	 
-	@Column(name = "startDate")
+	@Column(name = "start_date")
 	private Date startDate;
 	 
-	@Column(name = "endDate")
+	@Column(name = "end_date")
 	private Date endDate;
 	 
-	@Column(name = "maximumParticipants")
+	@Column(name = "maximum_participants")
 	private Integer maximumParticipants;
 	
 	@Column(name = "sport_id")
@@ -60,9 +62,6 @@ public class ChallengeEntity implements Serializable{
 	
 	@Column(name = "sponsoring_company_id")
 	private Integer sponsoringCompanyId;
-	
-	@Column(name = "status")
-	private short status; 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sport_id", referencedColumnName = "id", insertable = false, updatable = false)

@@ -3,6 +3,7 @@ package ec.com.sportgift.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
@@ -26,6 +27,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Entity
 @Table(name = "user_account")
 public class UserAccountEntity implements Serializable{
 

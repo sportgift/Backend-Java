@@ -1,6 +1,13 @@
 package ec.com.sportgift.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
@@ -23,22 +30,38 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class PromotionsAwardsEntity {
+@Entity
+@Table(name = "promotions_awards")
+public class PromotionsAwardsEntity implements Serializable{
 
-	 @Id
-	 private Integer id;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3159743416148616959L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+	private Integer id;
 	 
-	 private String name;
+	@Column(name = "name")
+	private String name;
 	 
-	 private String description;
+	@Column(name = "description")
+	private String description;
 	 
-	 private char prizeType;
+	@Column(name = "prize_type")
+	private char prizeType;
 	 
-	 private String photo;
+	@Column(name = "photo")
+	private String photo;
 	 
-	 private Date maximumExchangeDate;
+	@Column(name = "maximum_exchange_date")
+	private Date maximumExchangeDate;
 	 
-	 private Integer sponsoringCompanyId;
+	@Column(name = "sponsoring_company_id")
+	private Integer sponsoringCompanyId;
 	 
-	 private short status;
+	@Column(name = "status")
+	private short status;
 }

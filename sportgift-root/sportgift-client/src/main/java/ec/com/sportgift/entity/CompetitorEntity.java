@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
+@Entity
 @Table(name = "competitor")
 public class CompetitorEntity implements Serializable{
 
@@ -46,20 +48,17 @@ public class CompetitorEntity implements Serializable{
 
 	@Column(name = "name")
     private String name;
+
+	@Column(name = "email")
+    private String email;
 	
 	@Column(name = "user_account_id")
     private Integer userAccountId;
 	
-	@Column(name = "email")
-    private String email;
-
 	@Column(name = "avatar")
     private String avatar;
-	
-	@Column(name = "password")
-	private String password;
 
-	@Column(name = "name")
+	@Column(name = "weight")
     private Float weight;
 
 	@Column(name = "height")
@@ -92,8 +91,8 @@ public class CompetitorEntity implements Serializable{
 	@Column(name = "snapchat")
     private String snapchat;
 
-	@Column(name = "registration")
-    private Date registration;
+	@Column(name = "registration_date")
+    private Date registrationDate;
 
 	@Column(name = "status")
     private Short status;

@@ -12,7 +12,7 @@ import com.querydsl.jpa.JPQLQuery;
 import ec.com.sportgift.vo.request.TransactionsVO;
 import ec.com.sportgift.base.JPAQueryDslBaseRepository;
 import ec.com.sportgift.entity.QCryptoCurrencyEntity;
-import ec.com.sportgift.entity.QStoreEntity;
+
 import ec.com.sportgift.entity.QTransactionEntity;
 import ec.com.sportgift.entity.QWalletsEntity;
 import ec.com.sportgift.entity.TransactionEntity;
@@ -44,18 +44,16 @@ public class TransactionRepository extends JPAQueryDslBaseRepository<Transaction
 		QTransactionEntity qTransactionEntity = QTransactionEntity.transactionEntity;
 		QWalletsEntity qWalletEntity = QWalletsEntity.walletsEntity;
 		QCryptoCurrencyEntity qCryptoCurrencyEntity = QCryptoCurrencyEntity.cryptoCurrencyEntity;
-		QStoreEntity qStoreEntity = QStoreEntity.storeEntity;
 		
 		JPQLQuery<TransactionsVO> query = from(qTransactionEntity).select(Projections.bean(TransactionsVO.class,
 				  qTransactionEntity.id.as("transactionId"), qTransactionEntity.blockchainId,
 				  qTransactionEntity.coinsAmount, qTransactionEntity.timeoutTransaction, 
 				  qTransactionEntity.numberOfChecks, qWalletEntity.wallet, 
 				  qWalletEntity.privateKey, qWalletEntity.publicKey,
-				  qCryptoCurrencyEntity.smartContract, qStoreEntity.email, qStoreEntity.id.as("storeId")));
+				  qCryptoCurrencyEntity.smartContract ));
 		     
 	     query.innerJoin(qTransactionEntity.wallet, qWalletEntity);
 	     query.innerJoin(qTransactionEntity.cryptoCurrency, qCryptoCurrencyEntity);
-	     query.innerJoin(qTransactionEntity.store, qStoreEntity);
 	     query.orderBy(qTransactionEntity.blockchainId.desc());
 	     BooleanBuilder where = new BooleanBuilder();
 	    

@@ -46,48 +46,51 @@ public class TransactionEntity implements Serializable{
     
     @Column(name = "wallet_id")
 	private Integer walletId;
-    
-    @Column(name = "transaction_id")
-	private String transactionId;
-    
+
     @Column(name = "creation_time")
 	private Date creationTime;
     
     @Column(name = "timeout_transaction")
 	private Date timeoutTransaction;
     
-    @Column(name = "end_transaction")
-	private Date endTransaction;
-
     @Column(name = "cryptocurrency_id")
 	private Integer cryptoCurrencyId;
     
-    @Column(name = "store_id")
-	private Integer storeId;
+    @Column(name = "sponsoring_company_id")
+	private Integer sponsoringCompanyId;
+    
+    @Column(name = "competitor_id")
+	private Integer competitorId;
     
     @Column(name = "transaction_status_id ")
-	private Integer transactionStatusId;
+	private Integer transactionStatusId;    
     
     @Column(name = "coins_amount")
-	private BigDecimal coinsAmount;
+	private BigDecimal coinsAmount;    
     
-    @Column(name = "coins_received")
+	@Column(name = "coins_received")
 	private BigDecimal coinsReceived;
-    
+	
     @Column(name = "coin_price")
 	private BigDecimal coinPrice;
-    
+
     @Column(name = "total_payment")
 	private BigDecimal totalPayment;
+        
+    @Column(name = "transaction_id")
+	private String transactionId;
     
     @Column(name = "blockchain_id")
     private Integer blockchainId;
     
-    @Column(name = "last_check_date")
-    private Date lastCheckDate;
+    @Column(name = "end_transaction")
+	private Date endTransaction;
     
     @Column(name = "number_of_checks")
-    private Integer numberOfChecks;
+    private Integer numberOfChecks;    
+    
+    @Column(name = "last_check_date")
+    private Date lastCheckDate;
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -102,11 +105,15 @@ public class TransactionEntity implements Serializable{
 	private BlockchainEntity blockchain;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id", referencedColumnName = "id", insertable = false, updatable = false)
-	private StoreEntity store;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transaction_status_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private TransactionStatusEntity transactionStatus;	
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sponsoring_company_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private SponsoringCompanyEntity sponsoringCompanyEntity;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competitor_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private CompetitorEntity competitorEntity;
 
 }

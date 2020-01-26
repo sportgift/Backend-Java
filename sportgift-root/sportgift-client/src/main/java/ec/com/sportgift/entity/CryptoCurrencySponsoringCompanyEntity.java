@@ -31,9 +31,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cryptocurrency_store")
+@Table(name = "cryptocurrency_sponsoring_company")
 @ToString
-public class CryptoCurrencyStoreEntity implements Serializable{
+public class CryptoCurrencySponsoringCompanyEntity implements Serializable{
 	
 	private static final long serialVersionUID = 7317476658285364785L;
 	
@@ -45,8 +45,8 @@ public class CryptoCurrencyStoreEntity implements Serializable{
     @Column(name = "cryptocurrency_id")
 	private Integer cryptoCurrencyId;
     
-    @Column(name = "store_id")
-	private Integer storeId;
+    @Column(name = "sponsoring_company_id")
+   	private Integer sponsoringCompanyId;
     
     @Column(name = "status")
     private Boolean status;
@@ -56,6 +56,6 @@ public class CryptoCurrencyStoreEntity implements Serializable{
 	private CryptoCurrencyEntity cryptocurrencyEntity;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id", referencedColumnName = "id", insertable = false, updatable = false)
-	private StoreEntity storeEntity;
+    @JoinColumn(name = "sponsoring_company_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private SponsoringCompanyEntity sponsoringCompanyEntity;
 }

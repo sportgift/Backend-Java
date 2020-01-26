@@ -32,6 +32,10 @@ public class QTransactionEntity extends EntityPathBase<TransactionEntity> {
 
     public final NumberPath<java.math.BigDecimal> coinsReceived = createNumber("coinsReceived", java.math.BigDecimal.class);
 
+    public final QCompetitorEntity competitorEntity;
+
+    public final NumberPath<Integer> competitorId = createNumber("competitorId", Integer.class);
+
     public final DateTimePath<java.util.Date> creationTime = createDateTime("creationTime", java.util.Date.class);
 
     public final QCryptoCurrencyEntity cryptoCurrency;
@@ -46,9 +50,9 @@ public class QTransactionEntity extends EntityPathBase<TransactionEntity> {
 
     public final NumberPath<Integer> numberOfChecks = createNumber("numberOfChecks", Integer.class);
 
-    public final QStoreEntity store;
+    public final QSponsoringCompanyEntity sponsoringCompanyEntity;
 
-    public final NumberPath<Integer> storeId = createNumber("storeId", Integer.class);
+    public final NumberPath<Integer> sponsoringCompanyId = createNumber("sponsoringCompanyId", Integer.class);
 
     public final DateTimePath<java.util.Date> timeoutTransaction = createDateTime("timeoutTransaction", java.util.Date.class);
 
@@ -83,8 +87,9 @@ public class QTransactionEntity extends EntityPathBase<TransactionEntity> {
     public QTransactionEntity(Class<? extends TransactionEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.blockchain = inits.isInitialized("blockchain") ? new QBlockchainEntity(forProperty("blockchain")) : null;
+        this.competitorEntity = inits.isInitialized("competitorEntity") ? new QCompetitorEntity(forProperty("competitorEntity"), inits.get("competitorEntity")) : null;
         this.cryptoCurrency = inits.isInitialized("cryptoCurrency") ? new QCryptoCurrencyEntity(forProperty("cryptoCurrency"), inits.get("cryptoCurrency")) : null;
-        this.store = inits.isInitialized("store") ? new QStoreEntity(forProperty("store")) : null;
+        this.sponsoringCompanyEntity = inits.isInitialized("sponsoringCompanyEntity") ? new QSponsoringCompanyEntity(forProperty("sponsoringCompanyEntity"), inits.get("sponsoringCompanyEntity")) : null;
         this.transactionStatus = inits.isInitialized("transactionStatus") ? new QTransactionStatusEntity(forProperty("transactionStatus")) : null;
         this.wallet = inits.isInitialized("wallet") ? new QWalletsEntity(forProperty("wallet"), inits.get("wallet")) : null;
     }

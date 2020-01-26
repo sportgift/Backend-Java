@@ -3,6 +3,7 @@ package ec.com.sportgift.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
@@ -24,6 +25,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @Getter
 @Setter
+@Entity
 @Table(name = "country")
 public class CountryEntity implements Serializable{
     /**
@@ -38,6 +40,9 @@ public class CountryEntity implements Serializable{
     
 	@Column(name = "name") 
     private final String name;
+	
+	@Column(name = "code") 
+    private final String code;
     
 	@Column(name = "status") 
     private short status;

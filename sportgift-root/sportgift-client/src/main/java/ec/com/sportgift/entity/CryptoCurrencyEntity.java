@@ -62,16 +62,16 @@ public class CryptoCurrencyEntity implements Serializable{
     @Column(name = "is_token_ethereum")
 	private Boolean isTokenEthereum;
     
+	@Column(name = "status")
+    private Boolean status;
+	
     @Column(name = "blockchain_id")
 	private Integer blockchainId;
-	
-    @Column(name = "status")
-    private Boolean status;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "blockchain_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private BlockchainEntity blockchain;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cryptocurrencyEntity")
-    private List<CryptoCurrencyStoreEntity> cryptoCurrencies;
+    private List<CryptoCurrencySponsoringCompanyEntity> cryptoCurrencies;
 }

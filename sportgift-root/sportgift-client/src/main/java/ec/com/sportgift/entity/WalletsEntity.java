@@ -58,22 +58,22 @@ public class WalletsEntity implements Serializable{
     @Column(name = "blockchain_id")
    	private Integer blockchainId;
 	
-    @Column(name = "store_id")
-	private Integer storeId;
+    @Column(name = "sponsoring_company_id")
+	private Integer sponsoringCompanyId;
     
-    @Column(name = "atm_password")
-	private Integer atmPassword;
-    
-    @Column(name = "wallet_type")
-	private String walletType;
-    
+    @Column(name = "competitor_id")
+	private Integer competitorId;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "blockchain_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private BlockchainEntity blockchain;
 	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id", referencedColumnName = "id", insertable = false, updatable = false)
-	private StoreEntity store;
+    @JoinColumn(name = "sponsoring_company_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private SponsoringCompanyEntity sponsoringCompanyEntity;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competitor_id", referencedColumnName = "id", insertable = false, updatable = false)
+	private CompetitorEntity competitorEntity;
 
 }
