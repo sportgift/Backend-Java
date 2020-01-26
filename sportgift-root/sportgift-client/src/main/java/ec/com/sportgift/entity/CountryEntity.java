@@ -1,8 +1,14 @@
 package ec.com.sportgift.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
 import org.springframework.data.annotation.Id;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -14,16 +20,25 @@ import lombok.ToString;
  * @author Eduardo Alfonso Sanchez
  * @since 1.0.0
  */
-@EqualsAndHashCode(of = {"name"})
 @ToString
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class CountryEntity {
-    @Id
+@Table(name = "country")
+public class CountryEntity implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3042027547590792227L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id") 
     private Integer id;
     
+	@Column(name = "name") 
     private final String name;
     
+	@Column(name = "status") 
     private short status;
 }

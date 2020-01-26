@@ -16,7 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * MeasuredType model.
+ * UserAccountEntity model.
  *
  * @author Christian Domenech
  * @since 1.0.0
@@ -26,23 +26,31 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Table(name = "measured_type")
-public class MeasuredTypeEntity implements Serializable{
-	
-    /**
+@Table(name = "user_account")
+public class UserAccountEntity implements Serializable{
+
+
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8508422988105868376L;
-
+	private static final long serialVersionUID = -2665411285821337723L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
-    
-	@Column(name = "name")
-    private String name;
-    
-	@Column(name = "status")
-    private short status;
-
+	private Integer id;
+	
+	@Column(name = "user_name")	
+	private String userName;
+	
+	@Column(name = "email")	
+	private String email;
+	
+	@Column(name = "type_user")	
+	private Integer typeUser;
+	
+	@Column(name = "role")	
+	private String role;
+	
+	@Column(name = "password")	
+	private String password;
 }
