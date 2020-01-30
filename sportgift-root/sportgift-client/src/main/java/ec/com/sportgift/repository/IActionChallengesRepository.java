@@ -9,6 +9,6 @@ import ec.com.sportgift.entity.ActionChallengesEntity;
  * @author Christian Domenech
  *
  */
-public interface ActionChallengesRepository extends IQueryDslBaseRepository<ActionChallengesEntity> {
+public interface IActionChallengesRepository extends IQueryDslBaseRepository<ActionChallengesEntity> {
 
 }

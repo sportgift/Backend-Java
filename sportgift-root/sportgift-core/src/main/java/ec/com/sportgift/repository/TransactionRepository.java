@@ -21,7 +21,7 @@ import ec.com.sportgift.utils.SportgiftConstants;
 /**
  * Transaction Repository
  * 
- * @author Christian
+ * @author Christian Domenech
  *
  */
 @Lazy

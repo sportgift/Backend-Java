@@ -9,6 +9,6 @@ import ec.com.sportgift.entity.ActionsEntity;
  * @author Christian Domenech
  *
  */
-public interface ActionsRepository extends IQueryDslBaseRepository<ActionsEntity> {
+public interface IActionsRepository extends IQueryDslBaseRepository<ActionsEntity> {
 
 }

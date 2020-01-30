@@ -9,6 +9,6 @@ import ec.com.sportgift.entity.ChallengeEntity;
  * @author Christian
  *
  */
-public interface ChallengeRepository extends IQueryDslBaseRepository<ChallengeEntity> {
+public interface IChallengeRepository extends IQueryDslBaseRepository<ChallengeEntity> {
 
 }

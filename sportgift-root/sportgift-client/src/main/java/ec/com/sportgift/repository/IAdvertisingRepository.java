@@ -9,7 +9,7 @@ import ec.com.sportgift.entity.AdvertisingEntity;
  * @author Christian
  *
  */
-public interface AdvertisingRepository extends IQueryDslBaseRepository<AdvertisingEntity> {
+public interface IAdvertisingRepository extends IQueryDslBaseRepository<AdvertisingEntity> {
 
 
 }

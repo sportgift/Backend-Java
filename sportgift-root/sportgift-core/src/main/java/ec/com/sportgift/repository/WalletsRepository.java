@@ -8,6 +8,12 @@ import ec.com.sportgift.entity.WalletsEntity;
 import ec.com.sportgift.vo.request.WalletCredentialsVO;
 import ec.com.sportgift.vo.response.WalletVO;
 
+/**
+ * 
+ * 
+ * @author Christian Domenech
+ *
+ */
 @Lazy
 @Repository
 public class WalletsRepository extends JPAQueryDslBaseRepository<WalletsEntity> implements IWalletsRepository {
